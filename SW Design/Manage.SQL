@@ -19,7 +19,7 @@ create table Stock (
 	Quantity int not null,
 	Event boolean,
 	Lid varchar(20) not null,
-	primary key(Name, Edate)
+	primary key(Name)
 	);
 
 -- create Sales relation
