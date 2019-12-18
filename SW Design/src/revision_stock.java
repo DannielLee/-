@@ -41,10 +41,11 @@ public class revision_stock extends JFrame{
 	String[] title = {"제품명","수량","가격","유통기한"};
 	Object[][] data = new Object[100][4];
 
-	public revision_stock()
+	public revision_stock(String _Id)
 	{
-		Pname = database.getPname(); Pcost = database.getPcost(); Quantity = database.getQuantity();
-		Whole = database.getWhole(); Edate = database.getEdate(); Event = database.getEvent();
+		Id= _Id;
+		Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
+		Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
         setSize(WIDTH-150, HEIGHT-150);
         setTitle("Stock Revision");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -86,7 +87,7 @@ public class revision_stock extends JFrame{
 	    panel3.add(b2);
 	    b1.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		revision r = new revision();
+	    		revision r = new revision(Id);
 	    		r.setId(Id);
 	    		r.setVisible(true);
 	    	}
@@ -120,9 +121,5 @@ public class revision_stock extends JFrame{
 		}
 	}
 	
-	public static void main(String[] args)
-	{
-		revision_stock gui = new revision_stock();
-		gui.setVisible(true);
-	}
+
 }

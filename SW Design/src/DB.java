@@ -572,7 +572,7 @@ public class DB{
 	}
 	
 
-	public void Pselect()
+	public void Pselect(String _Lid)
 	// Select Data in Stock Relations
 	{
 		Connection conn = null;
@@ -588,7 +588,8 @@ public class DB{
 			conn = DriverManager.getConnection(url, "root", "Rlatjdrhs20");
 			System.out.println("Connection Success");
 			
-			String sql = "SELECT * FROM Stock;";
+			String sql = "SELECT * FROM Stock where Lid = "+ "'"+_Lid+"'";
+			
 			stmt = conn.createStatement();
 			
 			rs = stmt.executeQuery(sql);
@@ -629,7 +630,7 @@ public class DB{
 	}
 	
 
-	public void Sselect()
+	public void Sselect(String _Lid)
 	// Select Data in Sales Relations
 	{
 		Connection conn = null;
@@ -645,7 +646,7 @@ public class DB{
 			conn = DriverManager.getConnection(url, "root", "Rlatjdrhs20");
 			System.out.println("Connection Success");
 			
-			String sql = "SELECT * FROM Sales;";
+			String sql = "SELECT * FROM Sales";
 			stmt = conn.createStatement();
 			
 			rs = stmt.executeQuery(sql);
@@ -774,64 +775,64 @@ public class DB{
 		return Password;
 	}
 	
-	public String[] getPname()
+	public String[] getPname(String _Lid)
 	{
-		Pselect();
+		Pselect(_Lid);
 		return Pname;
 	}
 	
-	public int[] getPcost()
+	public int[] getPcost(String _Lid)
 	{
-		Pselect();
+		Pselect(_Lid);
 		return Pcost;
 	}
 	
-	public int[] getQuantity()
+	public int[] getQuantity(String _Lid)
 	{
-		Pselect();
+		Pselect(_Lid);
 		return Quantity;
 	}
 	
-	public int[] getWhole()
+	public int[] getWhole(String _Lid)
 	{
-		Pselect();
+		Pselect(_Lid);
 		return Whole;
 	}
 	
-	public Date[] getEdate()
+	public Date[] getEdate(String _Lid)
 	{
-		Pselect();
+		Pselect(_Lid);
 		return Edate;
 	}
 	
-	public boolean[] getEvent()
+	public boolean[] getEvent(String _Lid)
 	{
-		Pselect();
+		Pselect(_Lid);
 		return Event;
 	}
 	
-	public double[] getPsales()
+	public double[] getPsales(String _Lid)
 	{
-		Sselect();
+		Sselect(_Lid);
 		return Psales;
 	}
-	public int[] getMargin()
+	public int[] getMargin(String _Lid)
 	{
-		Sselect();
+		Sselect(_Lid);
 		return Margin;
 	}
 	
-	public double[] getDiscount()
+	public double[] getDiscount(String _Lid)
 	{
-		Sselect();
+		Sselect(_Lid);
 		return discounts;
 	}
-	public int getSaleAll()
+	public int getSaleAll(String _Lid)
 	{
 		int[] Sales = new int[20];
 		int All = 0; // Chong Panme
 		int i;
-		Pselect();
+		Pselect(_Lid);
 		
 		for(i=0; i<20; i++)
 		{

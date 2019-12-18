@@ -24,11 +24,12 @@ public class Event2 extends JFrame {
 	// Sales set
  	DB database = new DB();
 
- 	public Event2( )
+ 	public Event2(String _Id)
     {
- 		Pname = database.getPname(); Pcost = database.getPcost(); Quantity = database.getQuantity();
- 		Whole = database.getWhole(); Edate = database.getEdate(); Event = database.getEvent();
- 		Margin = database.getMargin(); Psales = database.getPsales(); Discounts = database.getDiscount();
+ 		Id= _Id;
+ 		Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
+ 		Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
+ 		Margin = database.getMargin(Id); Psales = database.getPsales(Id); Discounts = database.getDiscount(Id);
  		
         setTitle("standard registration");
         setSize(WIDTH, HEIGHT);
@@ -171,10 +172,4 @@ public class Event2 extends JFrame {
 	}
  		
 
-
-	public static void main(String[] args)
-	{
-		Event2 gui = new Event2();
-		gui.setVisible(true);
-	}
 }

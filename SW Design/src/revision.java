@@ -31,10 +31,11 @@ public double Psales[] = new double[20];
 // Sales set
 	DB database = new DB();
 
-	public revision()
+	public revision(String _Id)
 	{
-		Pname = database.getPname(); Pcost = database.getPcost(); Quantity = database.getQuantity();
-		Whole = database.getWhole(); Edate = database.getEdate(); Event = database.getEvent();
+		Id= _Id;
+		Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
+		Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
 		setSize(WIDTH, HEIGHT);
 		setTitle("Revision");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -87,9 +88,5 @@ public double Psales[] = new double[20];
 		Id = _Id;
 	}
 	
-	public static void main(String[] args)
-	{
-		revision gui = new revision();
-		gui.setVisible(true);
-	}
+	
 }

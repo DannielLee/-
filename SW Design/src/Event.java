@@ -24,20 +24,17 @@ public class Event extends JFrame implements ActionListener {
  	
  //	public boolean c;
  	
- 	public static void main(String[] args) {
-		Event gui = new Event( );
-        gui.setVisible(true);
-	}
 
- 	public Event( )
+ 	public Event(String _Id)
     {
+ 		Id= _Id;
  		for(int i = 0; i<20; i++)
  		{
  			Event[i]=false;
  		}
- 		Pname = database.getPname(); Pcost = database.getPcost(); Quantity = database.getQuantity();
- 		Whole = database.getWhole(); Edate = database.getEdate(); Event = database.getEvent();
- 		Margin = database.getMargin(); Psales = database.getPsales(); Discounts = database.getDiscount();
+ 		Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
+ 		Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
+ 		Margin = database.getMargin(Id); Psales = database.getPsales(Id); Discounts = database.getDiscount(Id);
  		
         setTitle("Event");
         setSize(WIDTH, HEIGHT);
@@ -126,8 +123,8 @@ public class Event extends JFrame implements ActionListener {
  	public void down(Object cells[][])
  	{
  		int i;
- 		Event = database.getEvent();
- 		Pcost = database.getPcost();
+ 		Event = database.getEvent(Id);
+ 		Pcost = database.getPcost(Id);
 
  		for(i = 0; i<20; i++)
  		{
@@ -142,7 +139,7 @@ public class Event extends JFrame implements ActionListener {
  	
  	public void actionPerformed(ActionEvent e)
     {
- 		Event2 gui = new Event2();
+ 		Event2 gui = new Event2(Id);
  		gui.setId(Id);
  		gui.setVisible(true);
     }

@@ -27,12 +27,13 @@ public class Analysis extends JFrame
 	String[] title = {"제품명","판매량","판매액", "마진"}; // 제품명, 판매량, 제품 총 판매액, 제품 순이익
 	Object[][] data = new Object[100][4];
 
- 	public Analysis()
+ 	public Analysis(String _Id)
     {
- 		Pname = database.getPname();
- 		Pcost = database.getPcost();
- 		Quantity = database.getQuantity();
- 		Whole = database.getWhole();
+ 		Id= _Id;
+ 		Pname = database.getPname(Id);
+ 		Pcost = database.getPcost(Id);
+ 		Quantity = database.getQuantity(Id);
+ 		Whole = database.getWhole(Id);
  		
  		Calculate();
         setSize(WIDTH-150, HEIGHT-150);
@@ -67,7 +68,7 @@ public class Analysis extends JFrame
 	    JPanel buttonpanel = new JPanel();
 	    buttonpanel.setLayout(new GridLayout(2,2));
 	    JLabel all = new JLabel("총 판매액"), income = new JLabel("순이익");
-	    JTextField all_t = new JTextField(""+database.getSaleAll()), 
+	    JTextField all_t = new JTextField(""+database.getSaleAll(Id)), 
 	    		income_t = new JTextField(""+database.getNetincome());
 	    all_t.setEditable(false);
 	    income_t.setEditable(false);
@@ -107,10 +108,5 @@ public class Analysis extends JFrame
  		Id = _Id;
  	}
  	
- 	public static void main(String[] args)
-    {
-    	Analysis gui = new Analysis();
-    	gui.setVisible(true);
-    }
  
 }

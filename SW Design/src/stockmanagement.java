@@ -38,14 +38,15 @@ public String Expdate[] = new String[20];
    JTable table;
 DB database = new DB();
 
-public stockmanagement()
+public stockmanagement(String _Id)
 {
+	Id= _Id;
 	for(int i = 0; i<20; i++)
 		{
 			Event[i]=false;
 		}
-	Pname = database.getPname(); Pcost = database.getPcost(); Quantity = database.getQuantity();
-	Whole = database.getWhole(); Edate = database.getEdate(); Event = database.getEvent();
+	Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
+	Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
 	init();
     setSize(WIDTH, HEIGHT);
     setTitle("재고 관리");
@@ -101,7 +102,7 @@ public stockmanagement()
     table.setModel(model1);
     b1.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent e) {
-    		sales_history sh = new sales_history();
+    		sales_history sh = new sales_history(Id);
     		sh.setId(Id);
     		sh.setVisible(true);
     		init();
@@ -109,7 +110,7 @@ public stockmanagement()
     });
     b2.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent e) {
-    		revision_stock rs = new revision_stock();
+    		revision_stock rs = new revision_stock(Id);
     		rs.setId(Id);
     		rs.setVisible(true);
     		init();
@@ -117,7 +118,7 @@ public stockmanagement()
     });
     b3.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent e) {
-    		warehousing w = new warehousing();
+    		warehousing w = new warehousing(Id);
     		w.setId(Id);
     		w.setVisible(true);
     	}
@@ -157,9 +158,5 @@ public void init()
 
 	}
 
-public static void main(String[] args)
-{
-	stockmanagement gui = new stockmanagement();
-	gui.setVisible(true);
-}
+
 }

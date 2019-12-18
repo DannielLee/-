@@ -37,15 +37,16 @@ public class sales_history extends JFrame{
 	Object[][] data = new Object[100][3];
 	
 
- 	public sales_history()
+ 	public sales_history(String _Id)
     {
+ 		Id= _Id;
  		for(int i = 0; i<20; i++)
  		{
  			Event[i]=false;
  			Soldout[i]=false;
  		}
-	 	Pname = database.getPname(); Pcost = database.getPcost(); Quantity = database.getQuantity();
-		Whole = database.getWhole(); Edate = database.getEdate(); Event = database.getEvent();
+	 	Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
+		Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
         setSize(WIDTH-150, HEIGHT-150);
         setTitle("Sales History");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -115,9 +116,5 @@ public class sales_history extends JFrame{
 		}
  	}
  
- 	public static void main(String[] args)
- 	{
-    	sales_history gui = new sales_history();
-    	gui.setVisible(true);
-    }
+ 
 }

@@ -18,6 +18,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Date;
 
+
+
 public class Main extends JFrame
 {
 	private DefaultTableModel model1;
@@ -42,16 +44,26 @@ public class Main extends JFrame
 	Object[][] data = new Object[100][4];
 	JButton b1, b2, b3;
 	
-	public Main()
+	
+	public void setId(String _Id)
 	{
-		Pname = database.getPname(); Pcost = database.getPcost(); Quantity = database.getQuantity();
-		Whole = database.getWhole(); Edate = database.getEdate(); Event = database.getEvent();
+		Id = _Id;
+	}
+	
+	
+	public Main(String _Id)
+	{
+		Id = _Id;
+		System.out.println(Id);
+		Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
+		Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
 		setSize(WIDTH, HEIGHT);
+		System.out.println(Id);
 		setTitle("메인 화면");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		init();
 		setLayout(new BorderLayout());
-		
+		System.out.println(Id);
 		JPanel panel1 = new JPanel();
 		JLabel label1 = new JLabel("Management Main");
 		label1.setFont(new Font("Arial", Font.BOLD, 60));
@@ -93,7 +105,7 @@ public class Main extends JFrame
 		add(buttonpanel, BorderLayout.SOUTH);
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				stockmanagement sh = new stockmanagement();
+				stockmanagement sh = new stockmanagement(Id);
 				sh.setId(Id);
 				sh.setVisible(true);
 				init();
@@ -101,7 +113,7 @@ public class Main extends JFrame
 		});
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Event rs = new Event();
+				Event rs = new Event(Id);
 				rs.setId(Id);
 				rs.setVisible(true);
 				init();
@@ -109,19 +121,14 @@ public class Main extends JFrame
 		});
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Analysis as = new Analysis();
+				Analysis as = new Analysis(Id);
 				as.setId(Id);
 				as.setVisible(true);
 				init();
 			}
 		});
 	}
-	
-	public void setId(String _Id)
-	{
-		Id = _Id;
-	}
-	
+
 	public void init()
 	{
 		int i;
@@ -138,10 +145,11 @@ public class Main extends JFrame
 		}
 
 	}
-	
+	/*
 	public static void main(String[] args)
 	{
 		Main gui = new Main();
 		gui.setVisible(true);
 	}
+	*/
 }	

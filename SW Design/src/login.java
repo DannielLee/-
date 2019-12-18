@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class login extends JFrame{
 
+	public String Id;
 	public login(){
 		DB a = new DB();
 		JPanel p = new JPanel();
@@ -55,10 +56,12 @@ public class login extends JFrame{
 				}
 				if(a.find(s1,pw))
 				{
+					Id = s1;
 					JOptionPane.showMessageDialog(null, "Sucess Login!");
-					
-					Main gui = new Main(); //일반 점주용 페이지
+					Main gui = new Main(s1); //일반 점주용 페이지
 					gui.setId(s1);
+					System.out.println("Id in Login: "+s1);
+					
 					gui.setVisible(true);
 					dispose();
 				}
@@ -100,6 +103,10 @@ public class login extends JFrame{
 				}
 			}
 		});
+	}
+	public String getId()
+	{
+		return Id;
 	}
 	
 	public static void main(String[] args)
