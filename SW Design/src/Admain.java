@@ -138,10 +138,11 @@ public void actionPerformed(ActionEvent e) {
 			
 			for(j=i;j+1<data.length;j++)
 			{
-				data[j][0] = data[j+1][1];
+				data[j][0] = data[j+1][0];
 				data[j][1] = data[j+1][1];
 			}
-			a.Rdelete((String) data[i][0]);
+			String _id = (String) data[i][0];
+			a.Rdelete(_id);
 		
 			break;
 		}

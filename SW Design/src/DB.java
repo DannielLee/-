@@ -98,7 +98,6 @@ public class DB{
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		boolean admin = false;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -111,7 +110,9 @@ public class DB{
 			String sql = "delete from Register where Id=?";
 			pstmt = conn.prepareStatement(sql);
 			
+			
 			pstmt.setString(1, _Id);
+			System.out.println(""+pstmt);
 			
 			int count = pstmt.executeUpdate();
 			if(count==0) {

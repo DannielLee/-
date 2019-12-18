@@ -86,8 +86,8 @@ public class login extends JFrame{
 					if(a.ad_find(s1))
 					{
 						JOptionPane.showMessageDialog(null, "Hello, Sir!");
-						//Admain gui = new Admain();
-						//gui.setVisible(true);
+						Admain gui = new Admain();
+						gui.setVisible(true);
 					}
 					else
 					{
