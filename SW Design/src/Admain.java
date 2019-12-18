@@ -71,12 +71,12 @@ public void init()
 {
 	int i;
 
-	for(i = 0; i<20; i++)
+	for(i = 1; i<20; i++)
 	{
 		if(Id[i]==null)
 			break;
 
-		data[i][0] = Id[i]; data[i][1] = Password[i];
+		data[i-1][0] = Id[i]; data[i-1][1] = Password[i];
 	}
 
 }
