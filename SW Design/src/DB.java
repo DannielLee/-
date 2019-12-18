@@ -93,6 +93,55 @@ public class DB{
 		}
 	}
 	
+	public void Rdelete(String _Id)
+	// input Date in Register Relations for login 
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean admin = false;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			String url = "jdbc:mysql://localhost:3306/store?serverTimezone=UTC";
+			
+			conn = DriverManager.getConnection(url, "root", "Rlatjdrhs20");
+			System.out.println("Connection Success");
+			
+			String sql = "delete from Register where Id=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, _Id);
+			
+			int count = pstmt.executeUpdate();
+			if(count==0) {
+				System.out.println("Failed to input data");
+			}
+			else {
+				System.out.println("Data input success");
+			}
+		}
+		catch(ClassNotFoundException e) {
+			System.out.println("Failed to load Driver");
+		}
+		catch(SQLException e) {
+			System.out.println("Error: "+e);
+		}
+		finally {
+			try {
+				if(conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+				if(pstmt != null && !pstmt.isClosed()) {
+					pstmt.close();
+				}
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public void Pinsert(String _Pname, int _Pcost, int _Whole, String _Pdate
 			, int _Quantity, String _Lid)
 	// Input Data in Stock Relations
@@ -255,6 +304,8 @@ public class DB{
 			
 			for(i=0; i<_Pname.length; i++)
 			{
+				if(_Pname[i]==null)
+					break;
 				pstmt.setInt(1, _Pcost[i]);
 				pstmt.setBoolean(2, _Event[i]);
 				pstmt.setString(3, _Pname[i]);
@@ -376,8 +427,11 @@ public class DB{
 			
 			for(i=0; i<_Pname.length; i++)
 			{
+				if(_Pname[i]==null)
+					break;
 				pstmt.setDouble(1, _Discount[i]);
 				pstmt.setString(2, _Pname[i]);
+				System.out.println(""+pstmt);
 			}
 				
 			int count = pstmt.executeUpdate();
@@ -705,6 +759,18 @@ public class DB{
 		}
 		
 		return false; // that id is not admin
+	}
+	
+	public String[] getId()
+	{
+		Rselect();
+		return Id;
+	}
+	
+	public String[] getPW()
+	{
+		Rselect();
+		return Password;
 	}
 	
 	public String[] getPname()
