@@ -54,16 +54,13 @@ public class Main extends JFrame
 	public Main(String _Id)
 	{
 		Id = _Id;
-		System.out.println(Id);
 		Pname = database.getPname(Id); Pcost = database.getPcost(Id); Quantity = database.getQuantity(Id);
 		Whole = database.getWhole(Id); Edate = database.getEdate(Id); Event = database.getEvent(Id);
 		setSize(WIDTH, HEIGHT);
-		System.out.println(Id);
 		setTitle("메인 화면");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		init();
 		setLayout(new BorderLayout());
-		System.out.println(Id);
 		JPanel panel1 = new JPanel();
 		JLabel label1 = new JLabel("Management Main");
 		label1.setFont(new Font("Arial", Font.BOLD, 60));
