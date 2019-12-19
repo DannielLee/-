@@ -123,6 +123,7 @@ public class Event extends JFrame implements ActionListener {
  	public void down(Object cells[][])
  	{
  		int i;
+ 		int j = 0;
  		Event = database.getEvent(Id);
  		Pcost = database.getPcost(Id);
 
@@ -132,8 +133,9 @@ public class Event extends JFrame implements ActionListener {
  				break;
  			if(Event[i]==false)
  				continue;
- 			cells[i][0] = Pname[i]; cells[i][1] = ""+(int)Discounts[i]*100 +"%";
- 			cells[i][2] = Pcost[i];
+ 			cells[j][0] = Pname[i]; cells[j][1] = ""+(int)Discounts[i]*100 +"%";
+ 			cells[j][2] = Pcost[i];
+ 			j++;
  		}
  	}
  	
