@@ -377,7 +377,7 @@ public class DB{
 				pstmt.setInt(3, _Margin);
 				pstmt.setDouble(4, _Discounts);
 			}
-			
+		
 			int count = pstmt.executeUpdate();
 			if(count==0) {
 				System.out.println("Failed to input data");
@@ -411,6 +411,7 @@ public class DB{
 	public void Sevent(String[] _Pname, double[] _Discount)
 	// Update Data in Sales Relations for Enrolling Events
 	{
+		one=false;
 		int i;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -464,7 +465,7 @@ public class DB{
 		}	
 	}
 	
-	public void Supdate(String _Pname, double _Psales, double _Margin, double discounts)
+	public void Supdate(String _Pname, double _Psales, int _Margin, double discounts)
 	// Update Data in Sales Relations for Enrolling Events
 	{
 		int i;
@@ -479,15 +480,14 @@ public class DB{
 			conn = DriverManager.getConnection(url, "root", "Rlatjdrhs20");
 			System.out.println("Connection Success");
 			
-			String sql = "UPDATE Sales set Psales=?, Margin=?, Discounts=? WHERE Pname=?";
+			String sql = "UPDATE Sales set Psales=?, Margin=?, Discounts=? WHERE Pname= " +"'"+_Pname+"'";
 			pstmt = conn.prepareStatement(sql);
 			
-
-			pstmt.setDouble(1, _Psales);
-			pstmt.setDouble(2, _Margin);
+			System.out.println("Update");
+			System.out.println(""+_Psales);
+			pstmt.setDouble(1, (double) _Psales);
+			pstmt.setInt(2, _Margin);
 			pstmt.setDouble(3, discounts);
-			pstmt.setString(4, _Pname);
-
 				
 			int count = pstmt.executeUpdate();
 			if(count==0) {

@@ -99,7 +99,7 @@ public class Analysis extends JFrame
  			data[i][2] = All[i]; data[i][3] = Margin[i];
  			System.out.println(""+Psales[i]);
  			
- 			database.Sinsert(Pname[i], Psales[i], Margin[i], 0);
+ 			database.Sinsert(Pname[i], (double) Psales[i], Margin[i], 0);
  		}
  	}
  	

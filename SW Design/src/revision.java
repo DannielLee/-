@@ -76,6 +76,7 @@ public double Psales[] = new double[20];
 				String amount_t = text2.getText().toString(); String price_t = text3.getText().toString();
 				String name = text1.getText().toString(); String expdate = text4.getText().toString();
 				int amount = Integer.parseInt(amount_t); int price = Integer.parseInt(price_t);
+				
 				database.Pupdate(name, price, expdate, amount);
 				dispose();
 			}
